@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+  <title>Account List</title>
+</h:head>
+
+<h:body>
+ <h:form>
+    <div class="card">
+        <p:dataTable var="account" value="#{accountListBean.listOfAccount}" rowKey="#{account.id}" selection="#{accountListBean.selectedAccount}"  selectionMode="single">
+            
+            <p:column headerText="Id">
+                <h:outputText value="#{account.id}" />
+            </p:column>
+            
+            <p:column headerText="Owner">
+                <h:outputText value="#{account.owner}" />
+            </p:column>
+            
+            <p:column headerText="Account Number">
+                <h:outputText value="#{account.accountNumber}" />
+            </p:column>
+
+            <p:column headerText="Balance">
+                <h:outputText value="#{account.balance}" >
+                    <f:convertNumber type="number" pattern = "#0.00" groupingUsed="true"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Created Date">
+                <h:outputText value="#{account.createDate}" >
+                  <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
+                </h:outputText>
+            </p:column>
+            
+        </p:dataTable>
+    </div>
+</h:form>
+</h:body>
+</html>
